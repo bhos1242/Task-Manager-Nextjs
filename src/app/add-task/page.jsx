@@ -2,9 +2,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import loginSvg from "../../assets/undraw_project_completed_re_jr7u.svg";
-export const metadata = {
-  title: "Add Task: Task Manager",
-};
 
 const AddTask = () => {
   const [task, setTask] = useState({
@@ -21,11 +18,11 @@ const AddTask = () => {
   };
   return (
     <div className="grid grid-cols-12 p-4 mx-auto bg-black">
-      <div className="md:col-span-6 col-span-12 md:col-start-4 p-6 bg-white rounded-lg shadow-md">
+      <div className="col-span-12 p-6 bg-white rounded-lg shadow-md md:col-span-6 md:col-start-4">
         <div className="flex justify-center my-y">
           <Image src={loginSvg} style={{ width: "50%" }} alt="login image" />
         </div>
-        <h1 className="mb-6 text-xl mt-3 font-semibold text-center">
+        <h1 className="mt-3 mb-6 text-xl font-semibold text-center">
           Add Your Task Here
         </h1>
 
