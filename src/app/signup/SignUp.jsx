@@ -10,39 +10,35 @@ const Signup = () => {
     email: "",
     password: "",
     about: "",
-    profileUrl: null, // Add the profileImg field to store the selected image file
+    profileUrl: "imgurl.com", // Add the profileImg field to store the selected image file
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
 
-    // Validate user data and perform signup logic here
     try {
-      // You can send a request to your backend to create a new user with the provided data
       const result = await SignUp(user);
-      console.log(result);
-      // If signup is successful, display a success toast
-      toast.success("Signup successful!");
+      if (result.status === false) {
+        // Handle error cases here
+        toast.error(result.message || "Signup failed. Please try again.");
+      } else {
+        // Signup was successful
+        toast.success("Signup successful!");
 
-      // Clear the form fields (including the profileImg field)
-      setUser({
-        username: "",
-        email: "",
-        password: "",
-        about: "",
-        profileUrl: null, // Clear the profileImg field as well
-      });
+        // Clear the form fields
+        setUser({
+          username: "",
+          email: "",
+          password: "",
+          about: "",
+          profileUrl: "",
+        });
+      }
     } catch (error) {
-      // If signup fails, display an error toast
-      toast.error("Signup failed. Please try again.");
       console.error(error);
+      toast.error("An error occurred during signup. Please try again.");
     }
-  };
-
-  const handleProfileImgChange = (e) => {
-    const file = e.target.files[0]; // Get the selected file
-    setUser({ ...user, profileUrl: file }); // Update the profileImg field with the selected file
   };
 
   return (
@@ -122,7 +118,7 @@ const Signup = () => {
           </div>
 
           {/* Profile Image */}
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label htmlFor="profileImg" className="block text-gray-700">
               Profile Image
             </label>
@@ -132,7 +128,7 @@ const Signup = () => {
               accept="image/*"
               onChange={handleProfileImgChange}
             />
-          </div>
+          </div> */}
 
           {/* Submit button */}
           <div className="text-center">
