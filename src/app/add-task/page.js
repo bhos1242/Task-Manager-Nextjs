@@ -4,9 +4,7 @@ import Image from "next/image";
 import loginSvg from "../../assets/undraw_project_completed_re_jr7u.svg";
 import { addTask } from "@/services/taskService";
 import toast, { Toaster } from "react-hot-toast";
-export const metadata = {
-  title: "Add Task:Task Manager",
-};
+
 const AddTask = () => {
   document.title = metadata.title;
   const [task, setTask] = useState({
