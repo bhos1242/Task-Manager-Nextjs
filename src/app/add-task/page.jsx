@@ -2,20 +2,33 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import loginSvg from "../../assets/undraw_project_completed_re_jr7u.svg";
-
+import { addTask } from "@/services/taskService";
+import toast, { Toaster } from "react-hot-toast";
 const AddTask = () => {
   const [task, setTask] = useState({
     title: "",
     content: "",
     status: "none",
-    userId: "",
+    userId: "64fb154350610fff3684fd2d",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(task);
     //validate task data
+    try {
+      const result = addTask(task);
+
+      toast.success("Task Added successfully");
+
+      console.log(result);
+    } catch (error) {
+      toast.error("Failed to add task");
+      console.log(error);
+    }
   };
+
+  const notify = () => toast("Here is your toast.");
   return (
     <div className="grid grid-cols-12 p-4 mx-auto bg-black">
       <div className="col-span-12 p-6 bg-white rounded-lg shadow-md md:col-span-6 md:col-start-4">
@@ -97,8 +110,11 @@ const AddTask = () => {
               Clear
             </button>
           </div>
-          {JSON.stringify(task)}
         </form>
+        <div>
+          <button onClick={notify}>Make me a toast</button>
+          <Toaster />
+        </div>
       </div>
     </div>
   );

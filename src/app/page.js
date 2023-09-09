@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import toast, { Toaster } from "react-hot-toast";
 export const metadata = {
   title: "Home: Task Manager",
 };
