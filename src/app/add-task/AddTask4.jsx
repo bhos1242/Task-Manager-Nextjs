@@ -4,7 +4,11 @@ import Image from "next/image";
 import loginSvg from "../../assets/undraw_project_completed_re_jr7u.svg";
 import { addTask } from "@/services/taskService";
 import toast, { Toaster } from "react-hot-toast";
+export const metadata = {
+  title: "Add Task:Task Manager",
+};
 const AddTask = () => {
+  document.title = metadata.title;
   const [task, setTask] = useState({
     title: "",
     content: "",
@@ -22,6 +26,13 @@ const AddTask = () => {
       toast.success("Task Added successfully");
 
       console.log(result);
+
+      setTask({
+        title: "",
+        content: "",
+        status: "",
+        userId: "",
+      });
     } catch (error) {
       toast.error("Failed to add task");
       console.log(error);
@@ -30,7 +41,7 @@ const AddTask = () => {
 
   const notify = () => toast("Here is your toast.");
   return (
-    <div className="grid grid-cols-12 p-4 mx-auto bg-black">
+    <div className="grid grid-cols-12 p-4 mx-auto ">
       <div className="col-span-12 p-6 bg-white rounded-lg shadow-md md:col-span-6 md:col-start-4">
         <div className="flex justify-center my-y">
           <Image src={loginSvg} style={{ width: "50%" }} alt="login image" />

@@ -33,10 +33,10 @@ const Footer = () => {
           <h1 className="mb-4 text-2xl">Contact Us</h1>
           <p className="text-sm">
             Email:{" "}
-            <a href="mailto:info@workmanager.com">info@workmanager.com</a>
+            <a href="mailto:info@workmanager.com">info@taskmanager.com</a>
           </p>
           <p className="text-sm">
-            Phone: <a href="tel:+123456789">+1 (234) 567-89</a>
+            Phone: <a href="tel:+123456789">9022738129</a>
           </p>
         </div>
         <div className="w-full md:w-1/2 lg:w-1/4">
@@ -44,7 +44,7 @@ const Footer = () => {
           <p className="text-sm">
             1234 Elm Street
             <br />
-            City, State 12345
+            Pune, Maharashtra 12345
             <br />
             Country
           </p>
