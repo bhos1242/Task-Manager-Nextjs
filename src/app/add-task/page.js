@@ -6,7 +6,6 @@ import { addTask } from "@/services/taskService";
 import toast, { Toaster } from "react-hot-toast";
 
 const AddTask = () => {
-  document.title = metadata.title;
   const [task, setTask] = useState({
     title: "",
     content: "",
