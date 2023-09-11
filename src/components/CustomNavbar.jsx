@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu } from "feather-icons";
 
-const CustomNavbar = () => {
+const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -114,4 +114,4 @@ const CustomNavbar = () => {
   );
 };
 
-export default CustomNavbar;
+export default Navbar;
