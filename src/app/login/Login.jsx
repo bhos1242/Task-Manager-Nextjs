@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import toast, { Toaster } from "react-hot-toast";
 import loginsvg from "../../assets/undraw_mobile_login_re_9ntv.svg"; // Import your login image
-import { login } from "@/services/userService"; // Import your login service function
+import { Login } from "@/services/userService"; // Import your login service function
 
 const LoginForm = () => {
   const [user, setUser] = useState({
@@ -15,7 +15,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const result = await login(user);
+      const result = await Login(user);
       if (result.status === false) {
         // Handle error cases here
         toast.error(result.message || "Login failed. Please try again.");
@@ -31,7 +31,7 @@ const LoginForm = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("An error occurred during login. Please try again.");
+      toast.error(error.response.data.message);
     }
   };
 

@@ -1,7 +1,7 @@
 import { connectDb } from "@/helper/db";
 import { NextResponse } from "next/server";
 import { User } from "@/models/userModel";
-
+import bcrypt from "bcryptjs";
 connectDb();
 
 export async function GET(request) {
@@ -21,19 +21,23 @@ export async function GET(request) {
 
 // POST
 export async function POST(request) {
+  // Parse JSON data from the request
+
+  const { username, email, password, about, profileUrl } = await request.json();
+  // Create a new user object
+  const user = new User({
+    username,
+    email,
+    password,
+    about,
+    profileUrl,
+  });
+
   try {
     // Parse JSON data from the request
-    const { username, email, password, about, profileUrl } =
-      await request.json();
-
-    // Create a new user object
-    const user = new User({
-      username,
-      email,
-      password,
-      about,
-      profileUrl,
-    });
+    const saltRounds = 10; // Number of rounds for salt generation
+    const salt = await bcrypt.genSalt(saltRounds);
+    user.password = await bcrypt.hash(user.password, salt);
 
     // Save the user object to the database
     const createdUser = await user.save();
